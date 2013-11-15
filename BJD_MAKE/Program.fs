@@ -45,10 +45,14 @@ let CopyBin(src_base,dst_base) =
     //************************************************
     //DLLコピー
     //************************************************
-    for f in  ["Dhcp";"Dns";"Ftp";"Pop3";"ProxyFtp";"ProxyHttp";"ProxyPop3";"ProxySmtp";"ProxyTelnet";"Remote";"Smtp";"Tftp";"Tunnel";"Web";"Sip"] do
+    for f in  ["Dhcp";"Dns";"Ftp";"Pop3";"ProxyFtp";"ProxyHttp";"ProxyPop3";"ProxySmtp";"ProxyTelnet";"Remote";"Smtp";"Tftp";"Tunnel";"Web";"Sip";"WebApi"] do
         let src = sprintf "%s\\%sServer.dll" srcDir f
         let dst = sprintf "%s\\%sServer.dll" dstDir f
         if not (File.Exists(dst)) then File.Copy(src,dst)
+
+    let src = sprintf "%s\\Newtonsoft.Json.dll" srcDir
+    let dst = sprintf "%s\\Newtonsoft.Json.dll" dstDir
+    if not (File.Exists(dst)) then File.Copy(src,dst)
 
     let src = sprintf "%s\\Option.def" src_base
     let dst = sprintf "%s\\BlackJumboDog\\Option.def" dst_base
@@ -81,7 +85,7 @@ let CopySrc(src_base,dst_base) =
                 "ProxyFtpServer";"ProxyHttpServer";"ProxyHttpServerTest";"ProxyPop3Server";
                 "ProxySmtpServer";"ProxyTelnetServer";"RemoteServer";
                 "SmtpServer";"SmtpServerTest";"TftpServer";"TunnelServer";
-                "WebServer";"WebServerTest";"SampleServer";"SampleServerTest";"SipServer";"SipServerTest"] do
+                "WebServer";"WebServerTest";"SampleServer";"SampleServerTest";"SipServer";"SipServerTest";"WebApiServer";"WebApiServerTest"] do
         let src = srcDir + n
         let dst = dstDir + n
         DirectoryCopy (src,dst)
@@ -145,7 +149,8 @@ let GetSize(fileName):int=
 let ver = "5.8.1"//作成するバージョン
 let src_base = "c:\\tmp2\\bjd5" //コピー元の基準フォルダ
 //let src_base = "X:\\Data\\SRC#2\\BJD\\blackjumbodog" //コピー元の基準フォルダ
-let dst_base = "D:\\tmp2" //コピー先の基準フォルダ
+//let dst_base = "D:\\tmp2" //コピー先の基準フォルダ
+let dst_base = "C:\\work" //コピー先の基準フォルダ
 let bin = sprintf "%s\\bjd-%s.zip" dst_base ver
 let src = sprintf "%s\\bjd-src-%s.zip" dst_base ver
 let msi = sprintf "%s\\bjd-%s.msi" dst_base ver
