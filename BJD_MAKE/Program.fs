@@ -54,6 +54,7 @@ let CopyBin(src_base,dst_base) =
     let dst = sprintf "%s\\Newtonsoft.Json.dll" dstDir
     if not (File.Exists(dst)) then File.Copy(src,dst)
 
+
     let src = sprintf "%s\\Option.def" src_base
     let dst = sprintf "%s\\BlackJumboDog\\Option.def" dst_base
     if not (File.Exists(dst)) then File.Copy(src,dst)
@@ -146,11 +147,10 @@ let GetSize(fileName):int=
 // Main
 //***************************************************
 
-let ver = "5.8.1"//作成するバージョン
+let ver = "5.9.8"//作成するバージョン
 let src_base = "c:\\tmp2\\bjd5" //コピー元の基準フォルダ
 //let src_base = "X:\\Data\\SRC#2\\BJD\\blackjumbodog" //コピー元の基準フォルダ
-//let dst_base = "D:\\tmp2" //コピー先の基準フォルダ
-let dst_base = "C:\\work" //コピー先の基準フォルダ
+let dst_base = "D:\\tmp2" //コピー先の基準フォルダ
 let bin = sprintf "%s\\bjd-%s.zip" dst_base ver
 let src = sprintf "%s\\bjd-src-%s.zip" dst_base ver
 let msi = sprintf "%s\\bjd-%s.msi" dst_base ver
